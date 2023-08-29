@@ -7,6 +7,7 @@ USER root
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN apt-get -y update
+RUN apt-get -y install systemd
 RUN apt-get -y install curl
 RUN apt-get -y install gpg
 RUN curl -fsSL https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/newrelic-infra.gpg
