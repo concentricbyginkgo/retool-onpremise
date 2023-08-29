@@ -1,10 +1,14 @@
 FROM tryretool/backend:3.8.4
-#USER root
+
+CMD ./docker_scripts/start_api.sh
+
+USER root
+
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN apt-get -y update
-RUN apt-get libcap2-bin
+RUN curl -fsSL https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/newrelic-infra.gpg
+RUN echo "deb https://download.newrelic.com/infrastructure_agent/linux/apt buster main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
+RUN apt-get -y update
 
-ENV  NRIA_MODE=UNPRIVILEGED
-
-RUN apt-get install newrelic-infra
-CMD ./docker_scripts/start_api.sh
+RUN apt-get -y install newrelic-infra
