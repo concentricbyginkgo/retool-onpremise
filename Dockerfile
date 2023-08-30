@@ -2,7 +2,7 @@ FROM newrelic/infrastructure:latest
 ADD newrelic-infra.yml /etc/newrelic-infra.yml
 
 
-FROM tryretool/backend:3.8.4
+FROM tryretool/backend:2.103.11
 
 CMD ./docker_scripts/start_api.sh
 
