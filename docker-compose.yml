@@ -44,6 +44,7 @@ services:
     ports:
       - "24224:24224"
       - "24224:24224/udp"
+    command: fluentd
 
   test-runner:
     build:
