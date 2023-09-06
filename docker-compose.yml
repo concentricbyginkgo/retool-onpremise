@@ -1,13 +1,5 @@
 version: '2'
 services:
-  otel-collector:
-    image: otel/opentelemtry-collector-contrib:latest
-    command: ["--config=/etc/otel-collector-config.yml"]
-    volumes:
-      - ./otel-collector-config.yml:/etc/otel-collector-config.yml
-    ports:
-      - "13133:13133"
-      - "4317:4317"
   api:
     build:
       context: ./
