@@ -15,7 +15,7 @@ RUN echo "<source>\n" \
          "\t@type forward\n" \
          "\tport 24224\n" \
          "\tbind 0.0.0.0\n" \
-         "\tag retool.service\n" \
+         "\ttag retool.service\n" \
          "</source>\n\n" \
          "<label @FLUENT_LOG>\n" \
          "\t<filter retool.service>\n" \
