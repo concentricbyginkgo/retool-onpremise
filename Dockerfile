@@ -12,17 +12,17 @@ RUN mkdir /etc/fluent
 RUN touch /etc/fluent/fluent.conf
 
 RUN echo "<source>\n" \
-         "@type forward\n" \
-         "port 24224\n" \
-         "bind 0.0.0.0\n" \
-         "tag retool.service\n" \
+         "\t@type forward\n" \
+         "\tport 24224\n" \
+         "\tbind 0.0.0.0\n" \
+         "\tag retool.service\n" \
          "</source>\n\n" \
          "<label @FLUENT_LOG>\n" \
          "\t<filter retool.service>\n" \
          "\t\t@type record_transformer\n" \
          "\t\t<record>\n" \
 	 "\t\t\tservice_name retool.service\n" \
-	 "\t\t\thostname '#{Socket.gethostname}'\n" \
+	 "\t\t\thostname app-59963.on-aptible.com\n" \
          "\t\t</record>\n" \
          "\t</filter>\n" \
          "\t<match retool.*>\n" \
