@@ -1,0 +1,6 @@
+{
+  "log-driver": "fluentd",
+  "log-opts": {
+    "fluentd-address": "fluentdhost:24224"
+  }
+}
