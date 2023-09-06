@@ -8,6 +8,7 @@ RUN apt-get install -y g++
 RUN apt-get install make
 RUN gem install fluent-plugin-newrelic
 
+USER retool_user
 CMD ./docker_scripts/start_api.sh
 
 
