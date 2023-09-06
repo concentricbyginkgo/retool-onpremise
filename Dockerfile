@@ -4,6 +4,7 @@ USER root
 RUN apt-get update
 RUN apt-get install -y ruby-full
 RUN apt-get install -y ruby-dev
+RUN apt-get install g++
 RUN apt-get install make
 RUN gem install fluent-plugin-newrelic
 
