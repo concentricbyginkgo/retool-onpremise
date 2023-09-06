@@ -31,6 +31,19 @@ services:
       - ./keys:/root/.ssh
       - ssh:/retool_backend/autogen_ssh_keys
       - ./retool:/usr/local/retool-git-repo
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: retool.api.service
+
+  fluentd:
+    build: ./fluentd
+    volumes:
+      - ./fluent.conf:/fluentd/etc
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
 
   test-runner:
     build:
