@@ -15,21 +15,19 @@ RUN echo "<source>\n" \
          "\t@type forward\n" \
          "\tport 24224\n" \
          "\tbind 0.0.0.0\n" \
-         "\ttag retool.service\n" \
+         "\ttag retool.api.service\n" \
          "</source>\n\n" \
-         "<label @FLUENT_LOG>\n" \
-         "\t<filter retool.service>\n" \
-         "\t\t@type record_transformer\n" \
-         "\t\t<record>\n" \
-	 "\t\t\tservice_name retool.service\n" \
-	 "\t\t\thostname app-59963.on-aptible.com\n" \
-         "\t\t</record>\n" \
-         "\t</filter>\n" \
-         "\t<match retool.*>\n" \
-         "\t\t@type newrelic\n" \
-         "\t\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
-	 "\t</match>\n" \
-         "</label>"  > /etc/fluent/fluent.conf
+         "<filter retool.service>\n" \
+         "\t@type record_transformer\n" \
+         "\t<record>\n" \
+	 "\t\tservice_name api\n" \
+	 "\t\thostname app-59963.on-aptible.com\n" \
+         "\t</record>\n" \
+         "</filter>\n" \
+         "<match *.**>\n" \
+         "\t@type newrelic\n" \
+         "\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
+	 "</match>\n"   > /etc/fluent/fluent.conf
 USER retool_user
 CMD ./docker_scripts/start_api.sh
 
