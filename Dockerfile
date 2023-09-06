@@ -17,7 +17,7 @@ RUN echo "<source>\n" \
          "bind 0.0.0.0\n" \
          "tag retool.service\n" \
          "</source>\n\n" \
-         "<label @FLUENT_LOG>" \
+         "<label @FLUENT_LOG>\n" \
          "\t<filter retool.service>\n" \
          "\t\t@type record_transformer\n" \
          "\t\t<record>\n" \
@@ -28,7 +28,7 @@ RUN echo "<source>\n" \
          "\t<match retool.*>\n" \
          "\t\t@type newrelic\n" \
          "\t\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
-	 "\t</match>" \
+	 "\t</match>\n" \
          "</label>"  > /etc/fluent/fluent.conf
 USER retool_user
 CMD ./docker_scripts/start_api.sh
