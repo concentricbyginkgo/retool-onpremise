@@ -40,7 +40,7 @@ services:
   fluentd:
     build: ./fluentd
     volumes:
-      - ./fluent.conf:/etc/fluent/
+      - ./fluent/conf:/fluent/etc
     ports:
       - "24224:24224"
       - "24224:24224/udp"
