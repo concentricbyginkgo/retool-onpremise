@@ -17,18 +17,19 @@ RUN echo "<source>\n" \
          "bind 0.0.0.0\n" \
          "tag retool.service\n" \
          "</source>\n\n" \
-         "<filter retool.service>\n" \
-         "@type record_transformer\n" \
-         "\t<record>\n" \
-	 "\t\tservice_name retool.service\n" \
-	 "\t\thostname '#{Socket.gethostname}'\n" \
-         "\t</record>\n" \
-         "</filter>\n" \
-         "<match retool.*>\n" \
-         "\t@type newrelic\n" \
-         "\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
-	 "\ttype_name retool-container-logs\n" \
-	 "</match>" > /etc/fluent/fluent.conf
+         "<label @FLUENT_LOG>" \
+         "\t<filter retool.service>\n" \
+         "\t\t@type record_transformer\n" \
+         "\t\t<record>\n" \
+	 "\t\t\tservice_name retool.service\n" \
+	 "\t\t\thostname '#{Socket.gethostname}'\n" \
+         "\t\t</record>\n" \
+         "\t</filter>\n" \
+         "\t<match retool.*>\n" \
+         "\t\t@type newrelic\n" \
+         "\t\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
+	 "\t</match>" \
+         "</label>"  > /etc/fluent/fluent.conf
 USER retool_user
 CMD ./docker_scripts/start_api.sh
 
