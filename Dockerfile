@@ -24,10 +24,10 @@ RUN echo "<source>\n" \
 	 "\t\thostname '#{Socket.gethostname}'\n" \
          "\t</record>\n" \
          "</filter>\n" \
-         "<match **>\n" \
-         "@type newrelic\n" \
-         "license_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
-	 "type_name retool-container-logs\n" \
+         "<match retool.*>\n" \
+         "\t@type newrelic\n" \
+         "\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
+	 "\ttype_name retool-container-logs\n" \
 	 "</match>" > /etc/fluent/fluent.conf
 USER retool_user
 CMD ./docker_scripts/start_api.sh
