@@ -8,8 +8,9 @@ RUN apt-get install -y g++
 RUN apt-get install make
 RUN gem install fluent-plugin-newrelic
 
-RUN mkdir /etc/fluent
-RUN touch /etc/fluent/fluent.conf
+RUN mkdir /fluent/etc
+RUN mkdir /fluent/conf
+RUN touch /fluent/conf/fluent.conf
 
 RUN echo "<source>\n" \
          "\t@type forward\n" \
@@ -27,7 +28,7 @@ RUN echo "<source>\n" \
          "<match *.**>\n" \
          "\t@type newrelic\n" \
          "\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
-	 "</match>\n"   > /etc/fluent/fluent.conf
+	 "</match>\n"   > /fluent/conf/fluent.conf
 USER retool_user
 CMD ./docker_scripts/start_api.sh
 
