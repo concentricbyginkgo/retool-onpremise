@@ -39,9 +39,9 @@ services:
         tag: retool.api.service
 
   fluentd:
-    build: ./fluent
+    build: ./fluentd
     volumes:
-      - ./fluent/conf:/fluent/etc
+      - ./fluentd/conf:/fluentd/etc
     ports:
       - "24224:24224"
       - "24224:24224/udp"
