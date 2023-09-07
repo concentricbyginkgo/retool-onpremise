@@ -35,7 +35,7 @@ services:
     logging:
       driver: "fluentd"
       options:
-        fluentd-address: app-59963.on-aptible.com:24224
+        fluentd-address: localhost:24224
         tag: retool.api.service
 
   fluentd:
