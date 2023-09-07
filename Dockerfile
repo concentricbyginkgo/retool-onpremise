@@ -18,14 +18,14 @@ RUN echo "<source>\n" \
          "\tbind 0.0.0.0\n" \
          "\ttag retool.api.service\n" \
          "</source>\n\n" \
-         "<filter retool.service>\n" \
+         "<filter retool.**>\n" \
          "\t@type record_transformer\n" \
          "\t<record>\n" \
 	 "\t\tservice_name api\n" \
 	 "\t\thostname app-59963.on-aptible.com\n" \
          "\t</record>\n" \
          "</filter>\n" \
-         "<match *.**>\n" \
+         "<match retool.**>\n" \
          "\t@type newrelic\n" \
          "\tlicense_key \"#{ENV['NEW_RELIC_LICENSE_KEY']}\"\n" \
 	 "</match>\n"   > /fluent/conf/fluent.conf

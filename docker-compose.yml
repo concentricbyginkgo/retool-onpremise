@@ -21,6 +21,7 @@ services:
       - db-connector
       - db-ssh-connector
       - jobs-runner
+      - fluentd
     command: bash -c "./docker_scripts/wait-for-it.sh postgres:5432; ./docker_scripts/start_api.sh"
     links:
       - postgres
