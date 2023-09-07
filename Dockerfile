@@ -8,6 +8,7 @@ RUN apt-get install -y g++
 RUN apt-get install make
 RUN gem install fluent-plugin-newrelic
 
+RUN mkdir /fluent
 RUN mkdir /fluent/etc
 RUN mkdir /fluent/conf
 RUN touch /fluent/conf/fluent.conf
