@@ -41,7 +41,7 @@ services:
   fluentd:
     build:
       context: ./fluentd
-      dockerfile: fluentd/Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - ./fluentd/conf:/fluentd/etc
     ports:
