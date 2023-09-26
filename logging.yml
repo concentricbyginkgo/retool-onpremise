@@ -1,0 +1,4 @@
+# new relic log management
+logs:
+  - name: retool_logs
+    file: /retool_backend/retool_logs.log
