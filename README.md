@@ -321,4 +321,3 @@ Below is a cheatsheet for useful Docker commands. Note that you may need to pref
 | `docker rm $(docker ps -a -q)` | Removes all containers and networks                                                                                        |
 | `docker rmi -f $(docker images -q)`| Removes (and un-tags) all images from the host                                                                         |
 | `docker volume rm $(docker volume ls -q)` | Removes all volumes and completely wipes any persisted data                                                     |
- 
